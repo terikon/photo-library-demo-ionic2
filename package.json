@@ -9,6 +9,7 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
     "run:android": "ionic run android --device --livereload",
+    "run:ios": "ionic run ios --device --livereload",
     "prepare": "cordova prepare"
   },
   "dependencies": {
