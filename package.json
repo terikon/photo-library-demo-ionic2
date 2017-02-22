@@ -7,7 +7,9 @@
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "run:android": "ionic run android --device --livereload",
+    "prepare": "cordova prepare"
   },
   "dependencies": {
     "@angular/common": "2.2.1",
@@ -40,5 +42,5 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "photo-library-demo-ionic2: An Ionic project"
+  "description": "Demo for cordova-plugin-photo-library on Ionic 2"
 }
