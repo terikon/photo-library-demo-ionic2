@@ -10,6 +10,8 @@
     "ionic:serve": "ionic-app-scripts serve",
     "run:android": "ionic run android --device --livereload",
     "run:ios": "ionic run ios --device --livereload",
+    "build:android": "ionic build android",
+    "build:ios": "ionic build ios",
     "prepare": "cordova prepare"
   },
   "dependencies": {
@@ -24,7 +26,7 @@
     "@angular/platform-server": "2.2.1",
     "@ionic/storage": "1.1.7",
     "ionic-angular": "2.0.1",
-    "ionic-native": "2.4.1",
+    "ionic-native": "file://e:/dev/github/viskin/ionic-native",
     "ionicons": "3.0.0",
     "rxjs": "5.0.0-beta.12",
     "sw-toolbox": "3.4.0",
