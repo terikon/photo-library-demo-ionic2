@@ -39,5 +39,6 @@
     <plugin name="cordova-plugin-photo-library" spec="~2.0.2">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="To choose photos" />
     </plugin>
+    <engine name="android" spec="~6.1.2"/>
     <engine name="ios" spec="~4.3.1" />
 </widget>
