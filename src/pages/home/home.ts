@@ -35,7 +35,7 @@ export class HomePage {
 
       this.library = [];
 
-      PhotoLibrary.getLibrary({thumbnailWidth: THUMBNAIL_WIDTH, thumbnailHeight: THUMBNAIL_HEIGHT, chunkTimeSec: 0.1}).subscribe({
+      PhotoLibrary.getLibrary({ thumbnailWidth: THUMBNAIL_WIDTH, thumbnailHeight: THUMBNAIL_HEIGHT, chunkTimeSec: 0.3 }).subscribe({
         next: (chunk) => {
           this.library = this.library.concat(chunk);
           this.cd.detectChanges();
