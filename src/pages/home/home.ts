@@ -1,3 +1,5 @@
+/// <reference path="../../../node_modules/@types/cordova/index.d.ts" />
+
 import { Component } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { Platform } from 'ionic-angular';
@@ -34,9 +36,9 @@ export class HomePage {
       this.library = [];
 
       cordova.plugins.photoLibrary.getLibrary(
-        ({chunk, isLastChunk})=> {
+        ({library, isLastChunk})=> {
 
-          this.library = this.library.concat(chunk);
+          this.library = this.library.concat(library);
           this.cd.detectChanges();
 
           if (isLastChunk) {

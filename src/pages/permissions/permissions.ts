@@ -1,3 +1,5 @@
+/// <reference path="../../../node_modules/@types/cordova/index.d.ts" />
+
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
