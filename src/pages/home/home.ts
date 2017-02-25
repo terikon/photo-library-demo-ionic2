@@ -7,8 +7,6 @@ import { ToastController, ModalController } from 'ionic-angular';
 import { PermissionsPage } from '../permissions/permissions';
 import { ItemDetailsPage } from '../item-details/item-details';
 
-import { PhotoLibrary, LibraryItem } from 'ionic-native';
-
 const THUMBNAIL_WIDTH = 512;
 const THUMBNAIL_HEIGHT = 384;
 
@@ -21,7 +19,7 @@ export class HomePage {
   thumbnailWidth = THUMBNAIL_WIDTH + 'px';
   thumbnailHeight = THUMBNAIL_HEIGHT + 'px';
 
-  library: LibraryItem[];
+  library: PhotoLibraryCordova.LibraryItem[];
 
   constructor(public navCtrl: NavController, private platform: Platform, private cd: ChangeDetectorRef, private toastCtrl: ToastController, private modalCtrl: ModalController) {
 
@@ -35,12 +33,17 @@ export class HomePage {
 
       this.library = [];
 
-      PhotoLibrary.getLibrary({ thumbnailWidth: THUMBNAIL_WIDTH, thumbnailHeight: THUMBNAIL_HEIGHT, chunkTimeSec: 0.3 }).subscribe({
-        next: (chunk) => {
+      cordova.plugins.photoLibrary.getLibrary(
+        ({chunk, isLastChunk})=> {
+
           this.library = this.library.concat(chunk);
           this.cd.detectChanges();
+
+          if (isLastChunk) {
+            // Library completely loaded
+          }
         },
-        error: (err: string) => {
+        (err: string) => {
           if (err.startsWith('Permission')) {
 
             let permissionsModal = this.modalCtrl.create(PermissionsPage);
@@ -58,10 +61,7 @@ export class HomePage {
             toast.present();
           }
         },
-        complete: () => {
-          // Library completely loaded
-        }
-      });
+        { thumbnailWidth: THUMBNAIL_WIDTH, thumbnailHeight: THUMBNAIL_HEIGHT, chunkTimeSec: 0.3 });
 
     });
 
@@ -73,6 +73,6 @@ export class HomePage {
     });
   }
 
-  trackById(index: number, libraryItem: LibraryItem): string { return libraryItem.id; }
+  trackById(index: number, libraryItem: PhotoLibraryCordova.LibraryItem): string { return libraryItem.id; }
 
 }

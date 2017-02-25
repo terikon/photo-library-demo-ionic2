@@ -3,8 +3,6 @@ import { Platform } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 
-import { PhotoLibrary } from 'ionic-native';
-
 @Component({
   selector: 'page-permissions',
   templateUrl: 'permissions.html'
@@ -17,17 +15,18 @@ export class PermissionsPage {
   tryRequestAuthorization() {
 
     this.platform.ready().then(() => {
-      PhotoLibrary.requestAuthorization({read: true})
-        .then(() => {
+      cordova.plugins.photoLibrary.requestAuthorization(
+        () => {
           this.navCtrl.pop();
-        })
-        .catch((err) => {
+        },
+        (err) => {
           let toast = this.toastCtrl.create({
             message: `requestAuthorization error: ${err}`,
             duration: 6000,
           });
           toast.present();
-        });
+        },
+        {read: true});
     });
 
   }
