@@ -8,8 +8,10 @@
     "build": "ionic-app-scripts build",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
-    "run:android": "ionic run android --device --livereload",
-    "run:ios": "ionic run ios --device --livereload",
+    "run:android:device": "ionic run android --device --livereload",
+    "run:android:emulator": "ionic run android --emulator --livereload",
+    "run:ios:device": "ionic run ios --device --livereload",
+    "run:ios:simulator": "ionic run ios --emulator --livereload",
     "build:android": "ionic build android",
     "build:ios": "ionic build ios",
     "prepare": "cordova prepare"
