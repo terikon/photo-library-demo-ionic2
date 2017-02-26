@@ -6,6 +6,7 @@ import { PermissionsPage } from '../pages/permissions/permissions';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 
 import { CDVPhotoLibraryPipe } from './cdvphotolibrary.pipe.ts';
+import { VirtualScrollModule } from 'angular2-virtual-scroll';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CDVPhotoLibraryPipe } from './cdvphotolibrary.pipe.ts';
     CDVPhotoLibraryPipe
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    VirtualScrollModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

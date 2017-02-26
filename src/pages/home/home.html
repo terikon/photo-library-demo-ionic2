@@ -8,10 +8,17 @@
 
 <ion-content padding>
   <ion-list>
+    <virtual-scroll [items]="library" (update)="viewPortItems = $event" [childWidth]="thumbnailWidth" [childHeight]="thumbnailHeight" >
+      <button ion-item *ngFor="let libraryItem of viewPortItems" (click)="itemTapped($event, libraryItem)">
+        <img [width]="thumbnailWidth" [height]="thumbnailHeight" [src]="libraryItem.thumbnailURL | cdvphotolibrary">
+      </button>
+    </virtual-scroll>
+  </ion-list>
+  <!--<ion-list>
     <button ion-item *ngFor="let libraryItem of library" (click)="itemTapped($event, libraryItem)">
       <img [src]="libraryItem.thumbnailURL | cdvphotolibrary">
     </button>
-  </ion-list>
+  </ion-list>-->
   <!-- virtualScroll is still problematic -->
   <!--<ion-list [virtualScroll]="library" [approxItemWidth]="thumbnailWidth" [approxItemHeight]="thumbnailHeight" [virtualTrackBy]="trackById" >
     <button ion-item *virtualItem="let libraryItem">

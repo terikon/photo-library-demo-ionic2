@@ -18,8 +18,8 @@ const THUMBNAIL_HEIGHT = 384;
 })
 export class HomePage {
 
-  thumbnailWidth = THUMBNAIL_WIDTH + 'px';
-  thumbnailHeight = THUMBNAIL_HEIGHT + 'px';
+  thumbnailWidth = THUMBNAIL_WIDTH /*+ 'px'*/;
+  thumbnailHeight = THUMBNAIL_HEIGHT /*+ 'px'*/;
 
   library: PhotoLibraryCordova.LibraryItem[];
 
