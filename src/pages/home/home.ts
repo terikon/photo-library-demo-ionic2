@@ -7,7 +7,7 @@ import { ToastController, ModalController } from 'ionic-angular';
 import { PermissionsPage } from '../permissions/permissions';
 import { ItemDetailsPage } from '../item-details/item-details';
 
-import { PhotoLibrary, LibraryItem } from 'ionic-native';
+import { PhotoLibrary, LibraryItem } from '@ionic-native/photo-library';
 
 const THUMBNAIL_WIDTH = 512;
 const THUMBNAIL_HEIGHT = 384;
@@ -23,7 +23,9 @@ export class HomePage {
 
   library: LibraryItem[];
 
-  constructor(public navCtrl: NavController, private platform: Platform, private cd: ChangeDetectorRef, private toastCtrl: ToastController, private modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController,
+    private photoLibrary: PhotoLibrary, private platform: Platform, private cd: ChangeDetectorRef,
+    private toastCtrl: ToastController, private modalCtrl: ModalController) {
 
     this.fetchPhotos();
 
@@ -35,7 +37,7 @@ export class HomePage {
 
       this.library = [];
 
-      PhotoLibrary.getLibrary({ thumbnailWidth: THUMBNAIL_WIDTH, thumbnailHeight: THUMBNAIL_HEIGHT, chunkTimeSec: 0.3 }).subscribe({
+      this.photoLibrary.getLibrary({ thumbnailWidth: THUMBNAIL_WIDTH, thumbnailHeight: THUMBNAIL_HEIGHT, chunkTimeSec: 0.3 }).subscribe({
         next: (chunk) => {
           this.library = this.library.concat(chunk);
           this.cd.detectChanges();

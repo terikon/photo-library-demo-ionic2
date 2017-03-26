@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 
-import { PhotoLibrary } from 'ionic-native';
+import { PhotoLibrary } from '@ionic-native/photo-library';
 
 @Component({
   selector: 'page-permissions',
@@ -11,13 +11,14 @@ import { PhotoLibrary } from 'ionic-native';
 })
 export class PermissionsPage {
 
-  constructor(public navCtrl: NavController, private platform: Platform, private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController,
+    private photoLibrary: PhotoLibrary, private platform: Platform, private toastCtrl: ToastController) {
   }
 
   tryRequestAuthorization() {
 
     this.platform.ready().then(() => {
-      PhotoLibrary.requestAuthorization({read: true})
+      this.photoLibrary.requestAuthorization({read: true})
         .then(() => {
           this.navCtrl.pop();
         })

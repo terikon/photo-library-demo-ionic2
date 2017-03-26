@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 
-import { LibraryItem } from 'ionic-native';
+import { LibraryItem } from '@ionic-native/photo-library';
 
 @Component({
   selector: 'page-item-details',
