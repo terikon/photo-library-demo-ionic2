@@ -27,6 +27,7 @@ export class HomePage {
     private photoLibrary: PhotoLibrary, private platform: Platform, private cd: ChangeDetectorRef,
     private toastCtrl: ToastController, private modalCtrl: ModalController) {
 
+    this.library = [];
     this.fetchPhotos();
 
   }
@@ -37,9 +38,10 @@ export class HomePage {
 
       this.library = [];
 
-      this.photoLibrary.getLibrary({ thumbnailWidth: THUMBNAIL_WIDTH, thumbnailHeight: THUMBNAIL_HEIGHT, chunkTimeSec: 0.3 }).subscribe({
+      this.photoLibrary.getLibrary({ thumbnailWidth: THUMBNAIL_WIDTH, thumbnailHeight: THUMBNAIL_HEIGHT/*, chunkTimeSec: 0.3*/ }).subscribe({
         next: (chunk) => {
           this.library = this.library.concat(chunk);
+          //this.library = this.library.slice(0, 9); // To take top 10 images
           this.cd.detectChanges();
         },
         error: (err: string) => {
