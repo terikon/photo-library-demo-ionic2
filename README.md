@@ -7,4 +7,6 @@ npm run run:android:device
 npm run run:android:emulator
 npm run run:ios:device
 npm run run:ios:simulator
+npm run build:android
+npm run build:ios
 ```
